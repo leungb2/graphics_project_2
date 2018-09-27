@@ -19,11 +19,12 @@ public class EnemyMovement : MonoBehaviour {
     {
         transform.Translate((waypoint.position - transform.position).normalized * speed * Time.deltaTime);
 
-        if (Vector3.Distance(waypoint.position, transform.position) <= 0.1)
+        if (Vector3.Distance(waypoint.position, transform.position) <= 0.2)
         {
             if (i >= Waypoints.waypoints.Length - 1)
             {
                 Destroy(gameObject);
+                return;
             }
 
             i++;
