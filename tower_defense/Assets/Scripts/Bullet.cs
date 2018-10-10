@@ -13,12 +13,17 @@ public class Bullet : MonoBehaviour {
         this.transform.Translate(dir * speed * Time.deltaTime);
 	}
 
-    private void OnTriggerEnter(Collider col)
+    void OnTriggerEnter(Collider col)
     {
         if (col.gameObject.tag == "enemy")
         {
             Destroy(this.gameObject);
             Destroy(col.gameObject);
         }
+    }
+
+    void OnBecameInvisible()
+    {
+        Destroy(this.gameObject);
     }
 }

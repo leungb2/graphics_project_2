@@ -7,6 +7,8 @@ public class Tower : MonoBehaviour {
     public GameObject target;
     public Bullet bulletPrefab;
     public float range = 15.0f;
+    public int buyValue = 300;
+    public int sellValue = 150;
 
     private float timer;
     private float shootTimer;
@@ -16,6 +18,7 @@ public class Tower : MonoBehaviour {
         target = null;
         timer = 0.0f;
         shootTimer = 2.0f;
+        InvokeRepeating("Target", 0.0f, 0.1f);
 	}
 	
 	// Update is called once per frame
@@ -23,7 +26,6 @@ public class Tower : MonoBehaviour {
     {
         timer -= Time.deltaTime;
 
-        Target();
         if (target == null) {
             return;
         }
@@ -47,14 +49,19 @@ public class Tower : MonoBehaviour {
             GameObject[] enemies = GameObject.FindGameObjectsWithTag("enemy");
             float shortestDistance = Mathf.Infinity;
 
-            for (int i = 0; i < enemies.Length - 1; i++)
+            foreach (GameObject enemy in enemies)
             {
-                float enemyDistance = Vector3.Distance(enemies[i].transform.position, transform.position);
+                float enemyDistance = Vector3.Distance(enemy.transform.position, transform.position);
                 if (enemyDistance <= shortestDistance)
                 {
                     shortestDistance = enemyDistance;
-                    target = enemies[i];
+                    target = enemy;
                 }
+            }
+
+            if (shortestDistance > range)
+            {
+                target = null;
             }
         }
     }
