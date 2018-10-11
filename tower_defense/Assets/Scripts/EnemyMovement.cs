@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyMovement : MonoBehaviour {
 
@@ -23,7 +24,8 @@ public class EnemyMovement : MonoBehaviour {
         {
             if (i >= Waypoints.waypoints.Length - 1)
             {
-                Destroy(gameObject);
+                SceneManager.LoadScene("GameOverLose");
+                //Destroy(gameObject);
                 return;
             }
 

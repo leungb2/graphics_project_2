@@ -25,8 +25,8 @@ public class GameManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-		
-	}
+
+    }
 
     public void openShop()
     {
@@ -39,12 +39,6 @@ public class GameManager : MonoBehaviour {
         shopOpen = false;
         shop.SetActive(false);
         shopScript.tile = null;
-
-    }
-
-    public void setShopTile(Tile t)
-    {
-        shopScript.tile = t;
     }
 
 }

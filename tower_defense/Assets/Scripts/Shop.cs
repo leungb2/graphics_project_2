@@ -12,13 +12,19 @@ public class Shop : MonoBehaviour {
     public Text sellButtonText;
     public Text buyButtonText;
 
-	// Use this for initialization
-	void Start ()
+    private GameObject sellButton;
+    private GameObject buyButton;
+
+    // Use this for initialization
+    void Start ()
     {
         gameManager = GameManager.instance;
         money = Money.instance;
         buyButtonText.text = "BuyTower\n$" + tower.buyValue.ToString();
-	}
+        sellButton = GameObject.Find("SellTower");
+        buyButton = GameObject.Find("BuyTower");
+
+    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -26,10 +32,14 @@ public class Shop : MonoBehaviour {
 		if (tile.tower != null)
         {
             sellButtonText.text = "SellTower\n$" + tower.sellValue.ToString();
+            sellButton.SetActive(true);
+            buyButton.SetActive(false);
         }
         else
         {
             sellButtonText.text = "SellTower\n$0";
+            sellButton.SetActive(false);
+            buyButton.SetActive(true);
         }
 	}
 
