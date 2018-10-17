@@ -11,18 +11,21 @@ public class Shop : MonoBehaviour {
     public Tower tower;
     public Text sellButtonText;
     public Text buyButtonText;
+    public Text upgradeButtonText;
 
     private GameObject sellButton;
     private GameObject buyButton;
+    private GameObject upgradeButton;
 
     // Use this for initialization
     void Start ()
     {
         gameManager = GameManager.instance;
         money = Money.instance;
-        buyButtonText.text = "BuyTower\n$" + tower.buyValue.ToString();
+        buyButtonText.text = "Buy Tower\n$" + tower.buyValue.ToString();
         sellButton = GameObject.Find("SellTower");
         buyButton = GameObject.Find("BuyTower");
+        upgradeButton = GameObject.Find("UpgradeTower");
 
     }
 	
@@ -31,24 +34,37 @@ public class Shop : MonoBehaviour {
     {
 		if (tile.tower != null)
         {
-            sellButtonText.text = "SellTower\n$" + tower.sellValue.ToString();
+            sellButtonText.text = "Sell Tower\n$" + tile.tower.sellValue.ToString();
             sellButton.SetActive(true);
             buyButton.SetActive(false);
+
+            if (tile.tower.towerLevel >= 3)
+            {
+                upgradeButtonText.text = "Upgrade Tower\n$0";
+                upgradeButton.SetActive(false);
+            }
+            else
+            {
+                upgradeButtonText.text = "Upgrade Tower\nto level " + (tile.tower.towerLevel + 1) + "\n$" + tile.tower.upgradeValue.ToString();
+                upgradeButton.SetActive(true);
+            }
         }
         else
         {
-            sellButtonText.text = "SellTower\n$0";
+            sellButtonText.text = "Sell Tower\n$0";
+            upgradeButtonText.text = "Upgrade Tower\n$0";
             sellButton.SetActive(false);
+            upgradeButton.SetActive(false);
             buyButton.SetActive(true);
         }
 	}
 
-    public void purchaseTower()
+    public void PurchaseTower()
     {
-        if (tile.tower == null && money.amount > tower.buyValue)
+        if (tile.tower == null && money.amount >= tower.buyValue)
         {
-            tile.buildTower();
             money.amount -= tower.buyValue;
+            tile.BuildTower();
         }
         else
         {
@@ -56,16 +72,29 @@ public class Shop : MonoBehaviour {
         }
     }
 
-    public void sellTower()
+    public void SellTower()
     {
         if (tile.tower != null)
         {
-            tile.destroyTower();
-            money.amount += tower.sellValue;
+            money.amount += tile.tower.sellValue;
+            tile.DestroyTower();
         }
         else
         {
             Debug.Log("no tower on tile!");
+        }
+    }
+
+    public void UpgradeTower()
+    {
+        if (tile.tower != null && money.amount >= tile.tower.upgradeValue)
+        {
+            money.amount -= tile.tower.upgradeValue;
+            tile.tower.Upgrade();
+        }
+        else
+        {
+            Debug.Log("not enough money!");
         }
     }
 }

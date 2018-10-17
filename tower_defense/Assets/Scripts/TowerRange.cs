@@ -8,9 +8,9 @@ public class TowerRange : MonoBehaviour
     public int segments = 50;
     public Color Color;
 
-    private LineRenderer line;
     private Tower tower;
     private float radius;
+    private LineRenderer line;
 
     private void Awake()
     {
@@ -23,11 +23,25 @@ public class TowerRange : MonoBehaviour
         line.positionCount = segments + 1;
         line.useWorldSpace = false;
         line.material.color = Color;
-        radius = tower.range/2;
+        radius = tower.GetTowerRange() / 2;
         CreatePoints();
     }
 
-    void CreatePoints()
+    private void Update()
+    {
+        radius = tower.GetTowerRange() / 2;
+
+        if (tower.towerRangeOn)
+        {
+            CreatePoints();
+        }
+        else
+        {
+            DestroyPoints();
+        }
+    }
+
+    public void CreatePoints()
     {
         float x;
         float z;
@@ -43,6 +57,14 @@ public class TowerRange : MonoBehaviour
             line.SetPosition(i, new Vector3(x, -0.49f, z));
 
             angle += change;
+        }
+    }
+
+    public void DestroyPoints()
+    {
+        for (int i = 0; i < (segments + 1); i++)
+        {
+            line.SetPosition(i, new Vector3(0.0f, 0.0f, 0.0f));
         }
     }
 }

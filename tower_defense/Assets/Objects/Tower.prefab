@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4598580537662328}
   - component: {fileID: 33975430736020122}
   - component: {fileID: 23057769902399984}
-  - component: {fileID: 114944613432441926}
+  - component: {fileID: 114866504996536288}
   - component: {fileID: 114850374607127694}
   - component: {fileID: 120934642713269596}
   m_Layer: 0
@@ -92,14 +92,14 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1596473082575544}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3cbf55f3a7414884db6717415bc0c3db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   segments: 50
   Color: {r: 1, g: 0.15566039, b: 0.15566039, a: 0}
---- !u!114 &114944613432441926
+--- !u!114 &114866504996536288
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -111,18 +111,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  bulletPrefab: {fileID: 114887545981855696, guid: 9d5fafc53bbc946de89b820bda0e4c11,
+  bulletPrefab: {fileID: 1953070039074100, guid: 9d5fafc53bbc946de89b820bda0e4c11,
     type: 2}
-  range: 15
-  buyValue: 300
-  sellValue: 150
+  towerRangeOn: 0
+  buyValue: 150
+  sellValue: 75
+  upgradeValue: 0
+  towerLevel: 0
+  upgrade_desc: 
+  bulletSpeed: 200
 --- !u!120 &120934642713269596
 LineRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1596473082575544}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1

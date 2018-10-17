@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour {
 
-    public Vector3 dir;
-    public float speed = 1.0f;
-
     private Money money;
 
 
@@ -16,12 +13,6 @@ public class Bullet : MonoBehaviour {
         money = Money.instance;
 
     }
-
-    // Update is called once per frame
-    void Update ()
-    {
-        this.transform.Translate(dir * speed * Time.deltaTime);
-	}
 
     void OnTriggerEnter(Collider col)
     {

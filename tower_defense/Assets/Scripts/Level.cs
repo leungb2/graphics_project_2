@@ -24,7 +24,7 @@ public class Level : MonoBehaviour {
     {
         roundText.text = "Round: " + round;
         round = 1;
-        lastRound = 3;
+        lastRound = 10;
         roundFinished = true;
         playNextRound = GameObject.Find("NextRound");
         timeBetweenEnemies = 0.0f;
@@ -75,11 +75,11 @@ public class Level : MonoBehaviour {
         }
 	}
 
-    public void nextRound()
+    public void NextRound()
     {
-        timeBetweenEnemies = 3.0f;
+        timeBetweenEnemies = 3.0f/round - 0.2f;
         timer = 2.0f;
-        enemy1Count = 3;
+        enemy1Count = 7 * round;
         roundFinished = false;
     }
 }

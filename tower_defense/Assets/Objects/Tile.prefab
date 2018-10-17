@@ -109,5 +109,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.5754717, g: 0.5754717, b: 0.5754717, a: 0}
-  towerPrefab: {fileID: 114944613432441926, guid: d85e51941c55b429bb50b5d33458d04f,
+  towerPrefab: {fileID: 114866504996536288, guid: d85e51941c55b429bb50b5d33458d04f,
     type: 2}
+  tower: {fileID: 0}

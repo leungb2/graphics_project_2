@@ -18,7 +18,7 @@ public class EnemyMovement : MonoBehaviour {
 	// Move in the direction of next waypoint
 	void Update ()
     {
-        transform.Translate((waypoint.position - transform.position).normalized * speed * Time.deltaTime);
+        GetComponent<Rigidbody>().velocity = (waypoint.position - transform.position).normalized * speed;
 
         if (Vector3.Distance(waypoint.position, transform.position) <= 0.2)
         {

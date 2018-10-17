@@ -33,15 +33,23 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    public void openShop()
+    public void OpenShop()
     {
         shopOpen = true;
         shop.SetActive(true);
+        if (shopScript.tile.tower != null)
+        {
+            shopScript.tile.tower.towerRangeOn = true;
+        }
     }
 
-    public void closeShop()
+    public void CloseShop()
     {
         shopOpen = false;
+        if (shopScript.tile.tower != null)
+        {
+            shopScript.tile.tower.towerRangeOn = false;
+        }
         shop.SetActive(false);
         shopScript.tile = null;
     }

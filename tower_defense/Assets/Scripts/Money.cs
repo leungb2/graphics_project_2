@@ -17,7 +17,7 @@ public class Money : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        amount = 500;
+        amount = 250;
 	}
 	
 	// Update is called once per frame

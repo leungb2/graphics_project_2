@@ -43,24 +43,23 @@ public class Tile : MonoBehaviour {
         {
             gameManager.shopOpen = true;
             gameManager.shopScript.tile = this;
-            gameManager.openShop();
+            gameManager.OpenShop();
         }
         else
         {
-            gameManager.closeShop();
+            gameManager.CloseShop();
             gameManager.shopScript.tile = this;
-            gameManager.openShop();
+            gameManager.OpenShop();
         }
-
     }
 
-    public void buildTower()
+    public void BuildTower()
     {
         tower = Instantiate<Tower>(towerPrefab);
         tower.transform.position = new Vector3(this.transform.position.x, 2.5f, this.transform.position.z);
     }
 
-    public void destroyTower()
+    public void DestroyTower()
     {
         Destroy(tower.gameObject);
         tower = null;
