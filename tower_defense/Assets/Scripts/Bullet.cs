@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour {
 
+    public GameObject enemyDestroyEffect;
+
     private Money money;
 
 
@@ -19,6 +21,8 @@ public class Bullet : MonoBehaviour {
         if (col.gameObject.tag == "enemy")
         {
             Destroy(this.gameObject);
+            GameObject effect = Instantiate(enemyDestroyEffect, col.gameObject.transform.position, Quaternion.identity);
+            Destroy(effect, 2.0f);
             Destroy(col.gameObject);
             money.amount += 5;
         }

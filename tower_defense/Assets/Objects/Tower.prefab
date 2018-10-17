@@ -114,8 +114,8 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1953070039074100, guid: 9d5fafc53bbc946de89b820bda0e4c11,
     type: 2}
   towerRangeOn: 0
-  buyValue: 150
-  sellValue: 75
+  buyValue: 200
+  sellValue: 100
   upgradeValue: 0
   towerLevel: 0
   upgrade_desc: 

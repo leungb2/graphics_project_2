@@ -78,12 +78,6 @@ public class Tower : MonoBehaviour {
 
     void Shoot()
     {
-        /*
-        Bullet bullet = Instantiate<Bullet>(bulletPrefab);
-        Vector3 bulletOrigin = new Vector3(this.transform.position.x, 2.5f, this.transform.position.z);
-        bullet.transform.position = bulletOrigin;
-        bullet.dir = (target.transform.position - bulletOrigin).normalized;
-        */
         Vector3 bulletOrigin = new Vector3(this.transform.position.x, 2.5f, this.transform.position.z);
         GameObject bullet = Instantiate(bulletPrefab, bulletOrigin, Quaternion.identity) as GameObject;
         Vector3 dir = (target.transform.position - bulletOrigin).normalized;

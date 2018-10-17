@@ -16,7 +16,7 @@ public class EnemyMovement : MonoBehaviour {
 	}
 	
 	// Move in the direction of next waypoint
-	void Update ()
+	void FixedUpdate ()
     {
         GetComponent<Rigidbody>().velocity = (waypoint.position - transform.position).normalized * speed;
 

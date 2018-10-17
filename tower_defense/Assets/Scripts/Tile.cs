@@ -5,11 +5,13 @@ using UnityEngine;
 public class Tile : MonoBehaviour {
 
     public Color highlightColor;
+    public Color selectedColor;
+    public Color tileColor;
+    public Renderer r;
     public Tower towerPrefab;
     public Tower tower;
+    public bool selected;
 
-    private Renderer r;
-    private Color tileColor;
     private GameManager gameManager;
 
     // Use this for initialization
@@ -19,6 +21,7 @@ public class Tile : MonoBehaviour {
         tileColor = r.material.color;
         tower = null;
         gameManager = GameManager.instance;
+        selected = false;
     }
 	
 	// Update is called once per frame
@@ -29,12 +32,18 @@ public class Tile : MonoBehaviour {
 
     void OnMouseEnter()
     {
-        r.material.color = highlightColor;
+        if (!selected)
+        {
+            r.material.color = highlightColor;
+        }
     }
 
     void OnMouseExit()
     {
-        r.material.color = tileColor;
+        if (!selected)
+        {
+            r.material.color = tileColor;
+        }
     }
 
     void OnMouseDown()
@@ -43,12 +52,14 @@ public class Tile : MonoBehaviour {
         {
             gameManager.shopOpen = true;
             gameManager.shopScript.tile = this;
+            gameManager.shopScript.tile.selected = true;
             gameManager.OpenShop();
         }
         else
         {
             gameManager.CloseShop();
             gameManager.shopScript.tile = this;
+            gameManager.shopScript.tile.selected = true;
             gameManager.OpenShop();
         }
     }

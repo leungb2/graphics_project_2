@@ -45,7 +45,9 @@ public class Shop : MonoBehaviour {
             }
             else
             {
-                upgradeButtonText.text = "Upgrade Tower\nto level " + (tile.tower.towerLevel + 1) + "\n$" + tile.tower.upgradeValue.ToString();
+                upgradeButtonText.text = "Upgrade Tower\nto level " + (tile.tower.towerLevel + 1)
+                    + "\n$" + tile.tower.upgradeValue.ToString()
+                    + "\nIncrease tower range and fire rate";
                 upgradeButton.SetActive(true);
             }
         }
