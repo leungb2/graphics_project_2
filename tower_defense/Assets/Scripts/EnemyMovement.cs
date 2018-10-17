@@ -20,7 +20,7 @@ public class EnemyMovement : MonoBehaviour {
     {
         GetComponent<Rigidbody>().velocity = (waypoint.position - transform.position).normalized * speed;
 
-        if (Vector3.Distance(waypoint.position, transform.position) <= 0.2)
+        if (Vector3.Distance(waypoint.position, transform.position) <= 0.4)
         {
             if (i >= Waypoints.waypoints.Length - 1)
             {
